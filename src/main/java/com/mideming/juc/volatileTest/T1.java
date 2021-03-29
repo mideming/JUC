@@ -1,5 +1,8 @@
 package com.mideming.juc.volatileTest;
 
+/**
+ * volatile可以保证变量的可见性
+ */
 public class T1 {
 
     static volatile boolean running = true;
