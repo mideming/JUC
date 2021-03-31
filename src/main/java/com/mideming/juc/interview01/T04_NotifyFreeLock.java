@@ -1,4 +1,4 @@
-package com.mideming.juc.interview;
+package com.mideming.juc.interview01;
 
 import java.util.LinkedList;
 import java.util.List;
