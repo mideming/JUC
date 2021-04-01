@@ -4,25 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * countDownLatch可以控制线程执行的个数，并且阻塞
+ */
 public class T06_CountDownLatch {
     public static void main(String[] args) {
-//        usingCountDownLatch();
-        usingJoin();
+        usingCountDownLatch();
+//        usingJoin();
     }
-
     private static void usingCountDownLatch() {
-        CountDownLatch latch = new CountDownLatch(100);
-        List<Thread> threads = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            threads.add(new Thread(() -> {
-                for (int j = 0; j < 1000; j++) {
+        CountDownLatch latch = new CountDownLatch(10);
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                for (int j = 0; j < 100; j++) {
                     System.out.println(j);
                 }
                 latch.countDown();
-            }));
-        }
-        for (Thread thread : threads) {
-            thread.start();
+            }).start();
         }
         try {
             latch.await();
@@ -32,11 +30,10 @@ public class T06_CountDownLatch {
         System.out.println("latch结束");
     }
     private static void usingJoin() {
-        CountDownLatch latch = new CountDownLatch(100);
         List<Thread> threads = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             threads.add(new Thread(() -> {
-                for (int j = 0; j < 1000; j++) {
+                for (int j = 0; j < 100; j++) {
                     System.out.println(j);
                 }
             }));

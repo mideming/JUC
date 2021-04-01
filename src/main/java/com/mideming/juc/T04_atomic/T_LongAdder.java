@@ -39,7 +39,7 @@ public class T_LongAdder {
             }
         }
         long end1 = System.currentTimeMillis();
-        System.out.println("count1=" + count1 + "用时" + (end1 - start1));
+        System.out.println("synchronized--count1=" + count1 + "用时" + (end1 - start1));
         List<Thread> threads2 = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
             threads2.add(new Thread(() -> {
@@ -60,7 +60,7 @@ public class T_LongAdder {
             }
         }
         long end2 = System.currentTimeMillis();
-        System.out.println("count2=" + count2 + "用时" + (end2 - start2));
+        System.out.println("AtomicLong--count2=" + count2 + "用时" + (end2 - start2));
         List<Thread> threads3 = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
             threads3.add(new Thread(() -> {
@@ -81,7 +81,7 @@ public class T_LongAdder {
             }
         }
         long end3 = System.currentTimeMillis();
-        System.out.println("count3=" + count3 + "用时" + (end3 - start3));
+        System.out.println("LongAdder--count3=" + count3 + "用时" + (end3 - start3));
 
     }
 }

@@ -5,7 +5,8 @@ package com.mideming.juc.T03_volatileTest;
  */
 public class T1 {
 
-    static volatile boolean running = true;
+    static boolean running = true;
+//    static volatile boolean running = true;
 
     public void test () {
         System.out.println("test start");

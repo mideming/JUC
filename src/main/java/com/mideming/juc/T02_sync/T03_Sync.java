@@ -13,4 +13,18 @@ public class T03_Sync {
     public void test2 () {
 
     }
+    public static void main(String[] args) {
+        T03_Sync t3 = new T03_Sync();
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                t3.test();
+            }).start();
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(t3.i);
+    }
 }

@@ -8,7 +8,6 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class T05_LockFair {
     static Lock lock = new ReentrantLock(true);
-
     public static void main(String[] args) {
         Thread thread1 = new Thread(() -> {
             for (int i = 0; i < 100; i++) {

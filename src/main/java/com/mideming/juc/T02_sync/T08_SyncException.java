@@ -33,23 +33,19 @@ public class T08_SyncException {
 
     public static void main(String[] args) {
         T08_SyncException t = new T08_SyncException();
-        Runnable r = new Runnable() {
-
-            @Override
-            public void run() {
-                t.m();
-            }
-
-        };
-        new Thread(r, "t1").start();
+        new Thread(() -> {
+            t.m();
+        }, "t1").start();
 
         try {
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        new Thread(r, "t2").start();
+        new Thread(() -> {
+            t.m();
+        }, "t2").start();
     }
 
 }

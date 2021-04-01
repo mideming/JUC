@@ -10,11 +10,7 @@ package com.mideming.juc.T03_volatileTest;
  */
 public class Singleton {
     private static volatile Singleton INSTANCE;
-
-    private Singleton () {
-
-    }
-
+    private Singleton () {}
     public static Singleton getInstance() {
         if (INSTANCE == null) {
             synchronized (Singleton.class) {
@@ -30,7 +26,6 @@ public class Singleton {
         }
         return INSTANCE;
     }
-
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {

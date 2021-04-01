@@ -3,37 +3,29 @@ package com.mideming.juc.T04_atomic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Synchronized使用了锁
- * AtomicLong没有使用锁，使用了CAS
+ * AtomicInteger没有使用锁，使用了CAS
  */
 public class T_AtomicInteger {
     static AtomicInteger a = new AtomicInteger(0);
-
     public void test() {
         for (int i = 0; i < 10000; i++) {
-            // a++;
             a.incrementAndGet();
         }
     }
-
     public static void main(String[] args) {
         T_AtomicInteger t2 = new T_AtomicInteger();
-        List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            threads.add(new Thread(t2::test));
+            new Thread(t2::test).start();
         }
-        for (Thread thread : threads) {
-            thread.start();
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        threads.forEach((t) -> {
-            try {
-                t.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
         System.out.println(a);
     }
 }

@@ -1,5 +1,8 @@
 package com.mideming.juc.T05_lock;
 
+/**
+ * synchronized对于可重入锁的写法
+ */
 public class T01_Synchronized {
     synchronized void m1 () {
         for (int i = 0; i < 10; i++) {

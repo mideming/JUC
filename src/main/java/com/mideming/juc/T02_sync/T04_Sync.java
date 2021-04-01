@@ -15,4 +15,18 @@ public class T04_Sync {
             i++;
         }
     }
+    public static void main(String[] args) {
+        T04_Sync t4 = new T04_Sync();
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                t4.test();
+            }).start();
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(t4.i);
+    }
 }

@@ -12,4 +12,19 @@ public class T01_Sync {
             i++;
         }
     }
+
+    public static void main(String[] args) {
+        T01_Sync t1 = new T01_Sync();
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                t1.test();
+            }).start();
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(t1.i);
+    }
 }
