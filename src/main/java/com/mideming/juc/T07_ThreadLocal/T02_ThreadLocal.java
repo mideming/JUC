@@ -4,7 +4,7 @@ package com.mideming.juc.T07_ThreadLocal;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 变量线程独享
+ * 变量线程独享，通过Thread的ThreadLocalMap对象存储
  */
 public class T02_ThreadLocal {
     static ThreadLocal<Integer> tl = new ThreadLocal<>();
