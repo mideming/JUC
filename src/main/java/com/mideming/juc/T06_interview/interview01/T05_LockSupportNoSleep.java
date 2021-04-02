@@ -8,7 +8,7 @@ import java.util.concurrent.locks.LockSupport;
  * 实现一个容器，提供2个方法，add,size
  * 写两个线程，线程1添加10个元素到容器中，线程2实现监控元素的个数，当个数到5个时，线程2给出提示并结束
  *
- *
+ * 使用LockSupport的park和unpark实现，可以不用睡眠
  */
 public class T05_LockSupportNoSleep {
     volatile List lists = new LinkedList();

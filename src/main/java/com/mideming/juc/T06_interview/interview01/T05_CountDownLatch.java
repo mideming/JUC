@@ -25,12 +25,10 @@ public class T05_CountDownLatch {
         T05_CountDownLatch c = new T05_CountDownLatch();
         new Thread(() -> {
             System.out.println("T2启动");
-            if (c.size() != 5) {
-                try {
-                    c.latch.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            try {
+                c.latch.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             System.out.println("T2结束");
         }).start();

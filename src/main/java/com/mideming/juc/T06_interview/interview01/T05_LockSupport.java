@@ -9,7 +9,7 @@ import java.util.concurrent.locks.LockSupport;
  * 实现一个容器，提供2个方法，add,size
  * 写两个线程，线程1添加10个元素到容器中，线程2实现监控元素的个数，当个数到5个时，线程2给出提示并结束
  *
- *
+ * 使用LockSupport的park和unpark实现
  */
 public class T05_LockSupport {
     volatile List lists = new LinkedList();
@@ -24,9 +24,7 @@ public class T05_LockSupport {
         T05_LockSupport c = new T05_LockSupport();
         Thread t2 = new Thread(() -> {
             System.out.println("T2启动");
-            if (c.size() != 5) {
-                LockSupport.park();
-            }
+            LockSupport.park();
             System.out.println("T2结束");
         });
         t2.start();

@@ -12,15 +12,8 @@ import java.util.List;
 public class T04_PhantomRefer {
     private static final List<Object> LIST = new LinkedList<>();
     private static final ReferenceQueue<M> QUEUE = new ReferenceQueue<>();
-
-
-
     public static void main(String[] args) {
-
-
         PhantomReference<M> phantomReference = new PhantomReference<>(new M(), QUEUE);
-
-
         new Thread(() -> {
             while (true) {
                 LIST.add(new byte[1024 * 1024]);
@@ -33,7 +26,6 @@ public class T04_PhantomRefer {
                 System.out.println(phantomReference.get());
             }
         }).start();
-
         new Thread(() -> {
             while (true) {
                 Reference<? extends M> poll = QUEUE.poll();
@@ -42,13 +34,10 @@ public class T04_PhantomRefer {
                 }
             }
         }).start();
-
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
-
 }

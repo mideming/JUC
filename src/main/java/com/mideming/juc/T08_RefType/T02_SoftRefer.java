@@ -4,7 +4,7 @@ import java.lang.ref.SoftReference;
 
 /**
  * 软引用
- * 系统内存不够用的时候会回收，够的话就不会回收
+ * 有指向地址时，调用gc，系统内存不够用的时候会回收，够的话就不会回收
  */
 public class T02_SoftRefer {
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class T02_SoftRefer {
         }
         System.out.println(m.get());
         // 再分配一个数组，heap将装不下，这时候系统会垃圾回收，先回收一次，如果不够，会把软引用干掉
-        byte[] b = new byte[1024 * 1024 * 7];
+        byte[] b = new byte[1024 * 1024 * 1];
         System.out.println(m.get());
     }
 }

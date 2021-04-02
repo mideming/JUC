@@ -4,7 +4,7 @@ package com.mideming.juc.T07_ThreadLocal;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 变量线程共享
+ * 变量被线程共享， 我想每个线程拥有自己独立的变量，可以通过ThreadLocal实现
  */
 public class T01_ThreadLocal {
     static volatile Integer a;

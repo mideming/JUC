@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * 面试题：写一个固定容量同步容器，拥有put和get方法，以及getCount方法
  * 能够支持2个生产者线程以及10个消费者线程的阻塞调用
  *
- * 使用wati和notify/notifyAll来实现
+ * 使用wait和notifyAll来实现
  */
 public class MyContainer1<T> {
     private LinkedList<T> list = new LinkedList<>();
@@ -44,14 +44,15 @@ public class MyContainer1<T> {
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 5; j++) {
-                    System.out.println("消费" + c1.take());
+                    System.out.println("消费===" + c1.take());
                 }
             }, "c" + i).start();
         }
         for (int i = 0; i < 2; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 25; j++) {
-                    c1.put(Thread.currentThread().getName() + " " + j);
+                    System.out.println("生产=" + Thread.currentThread().getName() + "-" + j);
+                    c1.put(Thread.currentThread().getName() + "-" + j);
                 }
             }, "p" + i).start();
         }

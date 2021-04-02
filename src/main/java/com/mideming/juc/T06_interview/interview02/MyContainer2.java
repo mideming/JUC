@@ -10,7 +10,6 @@ import java.util.concurrent.locks.ReentrantLock;
  * 能够支持2个生产者线程以及10个消费者线程的阻塞调用
  *
  * Condition的方式可以更加精确的指定哪些线程被唤醒
- *
  * Condition的本质就是等待队列的个数
  */
 public class MyContainer2<T> {
@@ -60,13 +59,14 @@ public class MyContainer2<T> {
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 5; j++) {
-                    System.out.println("消费" + c1.take());
+                    System.out.println("消费===" + c1.take());
                 }
             }, "c" + i).start();
         }
         for (int i = 0; i < 2; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 25; j++) {
+                    System.out.println("生产=" + Thread.currentThread().getName() + " " + j);
                     c1.put(Thread.currentThread().getName() + " " + j);
                 }
             }, "p" + i).start();
