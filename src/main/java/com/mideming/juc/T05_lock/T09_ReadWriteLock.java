@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * 读写锁
  * 共享锁（读），读的时候加锁，允许其他人读，但不允许写
- * 排他锁（写），写的时候加锁，不允许其他人读
+ * 排他锁（写），写的时候加锁，不允许其他人读，也不允许其他人写
  */
 public class T09_ReadWriteLock {
     // 这是排他锁
@@ -50,18 +50,18 @@ public class T09_ReadWriteLock {
     }
 
     public static void main(String[] args) {
-//        Runnable rRead = () -> {
-//            read(lock);
-//        };
-//        Runnable rWrite = () -> {
-//            write(lock, new Random().nextInt());
-//        };
         Runnable rRead = () -> {
-            read(readLock);
+            read(lock);
         };
         Runnable rWrite = () -> {
-            write(writeLock, new Random().nextInt());
+            write(lock, new Random().nextInt());
         };
+//        Runnable rRead = () -> {
+//            read(readLock);
+//        };
+//        Runnable rWrite = () -> {
+//            write(writeLock, new Random().nextInt());
+//        };
         for (int i = 0; i < 18; i++) {
             new Thread(rRead).start();
         }

@@ -13,25 +13,50 @@ public class T09_Semaphore {
             try {
                 // permits--
                 s.acquire();
-                System.out.println("T1 running...");
-                Thread.sleep(200);
-                System.out.println("T1 running...");
+                System.out.println("T1 running start...");
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 // permits++
+                System.out.println("T1 running end...");
                 s.release();
             }
         }).start();
         new Thread(() -> {
             try {
                 s.acquire();
-                System.out.println("T2 running...");
-                Thread.sleep(200);
-                System.out.println("T2 running...");
-                s.release();
+                System.out.println("T2 running start...");
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } finally {
+                System.out.println("T2 running end...");
+                s.release();
+            }
+        }).start();
+        new Thread(() -> {
+            try {
+                s.acquire();
+                System.out.println("T3 running start...");
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println("T3 running end...");
+                s.release();
+            }
+        }).start();
+        new Thread(() -> {
+            try {
+                s.acquire();
+                System.out.println("T4 running start...");
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println("T4 running end...");
+                s.release();
             }
         }).start();
     }

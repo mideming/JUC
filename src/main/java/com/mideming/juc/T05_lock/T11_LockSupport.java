@@ -23,12 +23,12 @@ public class T11_LockSupport {
             }
         });
         t.start();
-//        try {
-//            TimeUnit.SECONDS.sleep(8);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println("after 8 seconds");
+        try {
+            TimeUnit.SECONDS.sleep(8);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("after 8 seconds");
         LockSupport.unpark(t);// unpark可以先于park调用
         System.out.println("aaa");
     }

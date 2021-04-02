@@ -16,7 +16,7 @@ public class T10_Exchanger {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(Thread.currentThread().getName() + t1);
+            System.out.println(Thread.currentThread().getName() + "===" + t1);
         },"t1").start();
         new Thread(() -> {
             String t2 = "T2";
@@ -25,7 +25,7 @@ public class T10_Exchanger {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(Thread.currentThread().getName() + t2);
+            System.out.println(Thread.currentThread().getName() + "===" + t2);
         },"t2").start();
     }
 }
