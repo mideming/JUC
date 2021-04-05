@@ -29,7 +29,7 @@ public class T11_LockSupport {
             e.printStackTrace();
         }
         System.out.println("after 8 seconds");
-        LockSupport.unpark(t);// unpark可以先于park调用
+        LockSupport.unpark(t);
         System.out.println("aaa");
     }
 }

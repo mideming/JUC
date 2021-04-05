@@ -20,8 +20,9 @@ public class T09_TransferQueue {
         }).start();
 
         strs.transfer("aaa");
+        System.out.println("被取走了");
 
-        //strs.put("aaa");
+//        strs.put("aaa");
 
 
 		/*new Thread(() -> {
