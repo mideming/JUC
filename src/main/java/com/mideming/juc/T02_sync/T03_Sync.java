@@ -1,7 +1,7 @@
 package com.mideming.juc.T02_sync;
 
 /**
- * 对某个对象加锁
+ * 对某个方法加锁
  */
 public class T03_Sync {
     int i = 0;
